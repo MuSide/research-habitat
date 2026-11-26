@@ -2,7 +2,7 @@
 
 **A playful, data-backed academic field explorer.**
 
-Research Habitat is a bilingual EN / zh-CN web toy. Eight questions match a visitor's research preferences with ten fields, then combine the result with a curated ICLR 2022–2025 OpenReview snapshot, representative review excerpts, and a downloadable share card.
+Research Habitat is a bilingual EN / zh-CN web toy. Ten questions match a visitor's research preferences with ten fields, then combine the result with a curated ICLR 2022–2025 OpenReview snapshot, representative review excerpts, and a downloadable share card.
 
 ## Local development
 
