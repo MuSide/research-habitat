@@ -50,3 +50,45 @@ This is more responsive than V0.2 while retaining continuity: one changed answer
 - Graph ML remains close to Federated Learning and has the smallest healthy region above the warning threshold.
 - Archetypes are curated developer tests, not validated psychometrics.
 - Euclidean profile distance assumes dimensions are independent and equally important.
+
+## V0.3.1 category calibration
+
+The four result roles now share one deterministic profile but use different selection objectives:
+
+- **Natural Habitat:** highest overall compatibility.
+- **Comfort Zone:** highest `compatibility − 0.28 × friction` after Natural is removed.
+- **Dangerous Attraction:** a remaining field must normally clear attraction (48), friction (12), and compatibility (76) thresholds. It is then ranked by 55% attraction, 25% capped friction, and 20% compatibility. The compatibility term prevents a completely disliked field from winning; capped friction prevents the most punishing field from becoming the default danger.
+- **Not Your Habitat:** lowest compatibility after the other three roles are removed.
+
+Attraction is normalized alignment between the user's curiosity profile and each field's salient novelty, pace, interaction, perception, science, language, distributed, and ambiguity traits. Friction is a separate weighted measure of mismatches in compute, evaluation, systems work, theory, pace, benchmarks, novelty pressure, ambiguity, and interaction; it is not `1 − compatibility`.
+
+All four roles were unique in **50,000 / 50,000** profiles (duplicate count: **0**).
+
+### Dangerous Attraction distribution
+
+| Field | Rate |
+|---|---:|
+| Agentic AI | 31.8% |
+| AI Safety | 7.8% |
+| Efficient ML / Systems | 7.4% |
+| LLMs / NLP | 2.1% |
+| Federated Learning | 2.3% |
+| Graph Machine Learning | 6.6% |
+| Reinforcement Learning | 8.5% |
+| Multimodal AI / VLMs | 7.9% |
+| Computer Vision | 7.5% |
+| AI for Science | 18.1% |
+
+No field exceeds the 40% warning threshold. Agentic AI remains the largest dangerous-attraction region because its fast pace, interaction, evaluation burden, and novelty pressure often combine genuine appeal with friction; it is no longer an automatic fallback.
+
+### Five diagnostic cases
+
+| Case | Natural | Comfort | Dangerous | Not | Dangerous compatibility / attraction / friction | Why it is dangerous |
+|---:|---|---|---|---|---|---|
+| 1 | Agentic AI | LLMs / NLP | Efficient ML / Systems | Graph ML | 82 / 62 / 15 | Systems-scale work is appealing, but its engineering and benchmark burden adds meaningful friction. |
+| 2 | AI for Science | Graph ML | AI Safety | Agentic AI | 88 / 56 / 18 | Reliability questions are attractive, while adversarial evidence and ambiguity challenge this profile. |
+| 3 | Efficient ML / Systems | Federated Learning | AI for Science | Multimodal AI | 79 / 51 / 20 | Scientific structure is intriguing, but domain validation and uncertain evaluation create friction. |
+| 4 | Multimodal AI / VLMs | LLMs / NLP | Agentic AI | Federated Learning | 81 / 64 / 24 | Interactive autonomous behavior is tempting, but long-horizon evaluation and fast-moving novelty are costly. |
+| 5 | AI for Science | Graph ML | AI Safety | Agentic AI | 88 / 52 / 18 | Safety is close enough to attract this evidence-minded profile, yet threat-model and edge-case work create tension. |
+
+The Q9 and Q10 wording was made indirect to remove field-name leakage. Their latent contributions did not change, so Natural Habitat distribution and the **30/30 Top-2** archetype result remain stable. Updated sensitivity measures Top-3 membership rather than ordering: one answer changed 33.5% / 46.4% (Top-1 / Top-3), two changed 47.4% / 61.9%, and three changed 57.7% / 73.7%.
